@@ -40,3 +40,5 @@ Route::post('getjson',function (){
     $data = file_get_contents('php://input');
     dump($data);
 });
+
+Route::get('/brand','Api\TestController@brand');
