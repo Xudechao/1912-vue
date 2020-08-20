@@ -42,3 +42,4 @@ Route::post('getjson',function (){
 });
 
 Route::get('/brand','Api\TestController@brand');
+Route::any('/user/login','Api\TestController@login');
