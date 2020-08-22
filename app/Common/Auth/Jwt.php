@@ -3,6 +3,9 @@ namespace App\Common\Auth;
 
 use Lcobucci\JWT\Builder;
 use Lcobucci\JWT\Signer\Hmac\Sha256;
+use Lcobucci\JWT\Parser;
+use Lcobucci\JWT\ValidationData;
+
 /**
  * 单例模式
  * Class Jwt
@@ -10,6 +13,7 @@ use Lcobucci\JWT\Signer\Hmac\Sha256;
  */
 class Jwt{
     private $token;
+    private $decodetoken;
     //jwt验签者
     private $iss = 'http://vue.1912.com';
     //接收jwt的一方
@@ -37,7 +41,8 @@ class Jwt{
         return self::$instance;
     }
 
-    public function encode(){
+    public function encode()
+    {
         $time = time();
         $this->token = (new Builder())->setHeader('alg','HS256')
             ->issuedBy($this->iss)
@@ -64,9 +69,33 @@ class Jwt{
         $this->uid = $uid;
         return $this;
     }
-
     public function getToken(){
         return (string)$this->encode();
     }
+    public function setToken($token){
+        $this->token = $token;
+        return $this;
+    }
+    public function decode(){
+        if(!$this->decodetoken) {
+            $this->decodetoken = (new Parser())->parse((string) $this->token);
+            $this->uid = $this->decodetoken->getClaims('uid');
+        }
+        return $this->decodetoken;
+    }
+    public function verify(){
+        $signer = new Sha256();
+        $res = $this->decode()->verify($signer,$this->scerect);
+        return $res;
+    }
+    public  function Validate(){
+        $data = new ValidationData();
+        $data->setIssuer($this->iss);
+        $data->setAudience($this->aud);
+        $data->setId('4f1g23a12aa');
+        $res = $this->decode()->validate($data);
+        return $res;
+    }
+
 }
 ?>

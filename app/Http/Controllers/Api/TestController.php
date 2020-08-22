@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Model\BrandModel;
 use App\Model\LoginModel;
 use App\Common\Auth\Jwt;
+use App\Http\Response\JsonRequest;
 
 class TestController extends Controller
 {
@@ -19,11 +20,8 @@ class TestController extends Controller
 
     public function login(Request $request)
     {
-
         $admin_name = $request->admin_name;
         $pwd = $request->pwd;
-         //echo $admin_name;
-        // echo $pwd;
 
        $login = LoginModel::where('admin_name',$admin_name)->first();
        //没有此用户
@@ -44,4 +42,9 @@ class TestController extends Controller
 
     }
 
+    public function user(){
+        $user = LoginModel::get()->toArray();
+        echo json_encode(['code'=>'00000','msg'=>'ok','data'=>$user]);die;
+
+    }
 }
