@@ -35,7 +35,7 @@
     $('button').click(function () {
         var admin_name = $('input[name="admin_name"]').val();
         var pwd = $('input[name="pwd"]').val();
-        $.post('http://vue.1912.com/api/user/login',{admin_name:admin_name,pwd:pwd},
+        $.post('http://vue.1912.com/api/user/regs',{admin_name:admin_name,pwd:pwd},
         function (res) {
           if(res.code=='10001'){
               alert(res.msg);

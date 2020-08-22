@@ -45,5 +45,8 @@ Route::get('/brand','Api\TestController@brand');
 Route::any('/user/login','Api\TestController@login');
 Route::middleware('jwt')->group(function (){
     Route::get('/user/info','Api\TestController@user');
-
 });
+
+Route::any('/admin/reg','Index\IndexController@reg'); //注册
+Route::any('/admin/regs','Index\IndexController@regs'); //登录
+Route::any('/admin/add','Index\IndexController@add'); //登录
