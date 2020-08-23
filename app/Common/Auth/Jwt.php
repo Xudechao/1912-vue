@@ -55,7 +55,7 @@ class Jwt{
             // Configures the time that the token was issue (iat claim)
         ->canOnlyBeUsedAfter($time + 60)
             // Configures the time that the token can be used (nbf claim)
-        ->expiresAt($time + 3600)
+        ->expiresAt($time + 300)
             // Configures the expiration time of the token (exp claim)
         ->withClaim('uid', $this->uid)
             // Configures a new claim, called "uid"
