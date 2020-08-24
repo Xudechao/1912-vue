@@ -8,7 +8,7 @@ use App\Model\BrandModel;
 use App\Model\LoginModel;
 use App\Common\Auth\Jwt;
 use App\Http\Response\JsonRequest;
-use App\Common\Error\Error;
+//use App\Common\Error\Error;
 
 class TestController extends Controller
 {
@@ -27,7 +27,7 @@ class TestController extends Controller
        $login = LoginModel::where('admin_name',$admin_name)->first();
        //没有此用户
        if(!$login){
-           echo json_encode(['code'=>'10001','msg'=>'没有此用户']);die;
+           echo json_encode(['code'=>'10001','msg'=>'用户名或密码错误']);die;
        }
        //密码错误
        if(decrypt($login->pwd) != $pwd){
