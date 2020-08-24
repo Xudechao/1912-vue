@@ -21,3 +21,6 @@ Route::view("/login","login");
 
 Route::any('/admin/reg','Index\IndexController@reg'); //注册
 Route::any('/admin/regs','Index\IndexController@regs');
+
+Route::view("/login","login");
+route::view('/register','register');

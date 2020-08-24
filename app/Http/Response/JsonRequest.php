@@ -3,32 +3,21 @@
 namespace App\Http\Response;
 
 trait JsonRequest{
-    public function N($error_no,$error_msg){
-//        return $this->JsonResponse('000000','success',$data);
-
-        $content = [
-            'error_no'=>$error_no,
-            'error_msg'=>$error_msg,
-        ];
-        return json_encode($content);
-    }
     public function Y($data){
-//        return $this->JsonResponse('000000','success',$data);
-
-        $content = [
-            'error_no'=>0,
-            'error_msg'=>'ok',
-            'data'=>$data
-        ];
-        return json_encode($content);exit;
+        return $this->All('000000','成功',$data);
     }
-    public function CenterJson($error_no,$error_msg,$data=[]){
-
+    public function T($data){
+        return $this->All('0','ok',$data);
+    }
+    public function N($error_no,$error_msg){
+        return $this->All($error_no,$error_msg);
+    }
+    public function All($error_no,$error_msg,$data=[]){
         $content = [
             'error_no'=>$error_no,
             'error_msg'=>$error_msg,
             'data'=>$data
         ];
-        return json_encode($content);exit;
+        echo json_encode($content);die;
     }
 }

@@ -20,7 +20,7 @@
     <div class="form-group">
         <label for="lastname" class="col-sm-2 control-label">密码</label>
         <div class="col-sm-8">
-            <input type="text" class="form-control" id="firstpwd" name="pwd"
+            <input type="password" class="form-control" id="firstpwd" name="pwd"
                    placeholder="请输入密码">
         </div>
     </div>
@@ -36,7 +36,7 @@
         var pwd = $('input[name=pwd]').val();
 
 
-       $.post('http://vue.1912.com/api/admin/regs',{admin_name:admin_name,pwd:pwd},function (res) {
+       $.post('http://vue.1912.com/api/register',{admin_name:admin_name,pwd:pwd},function (res) {
             if(res.code=='100001'){
                 alert(res.msg);
             }

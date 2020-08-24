@@ -20,7 +20,7 @@
     <div class="form-group">
         <label for="lastname" class="col-sm-2 control-label">密码</label>
         <div class="col-sm-8">
-            <input type="text" class="form-control" id="firstpwd" name="pwd"
+            <input type="password" class="form-control" id="firstpwd" name="admin_pwd"
                    placeholder="请输入密码">
         </div>
     </div>
@@ -34,12 +34,12 @@
 <script>
     $('button').click(function () {
         var admin_name = $('input[name="admin_name"]').val();
-        var pwd = $('input[name="pwd"]').val();
-        $.post('http://vue.1912.com/api/user/regs',{admin_name:admin_name,pwd:pwd},
+        var admin_pwd = $('input[name="admin_pwd"]').val();
+        $.post('http://vue.1912.com/api/login',{admin_name:admin_name,admin_pwd:admin_pwd},
         function (res) {
-          if(res.code=='10001'){
-              alert(res.msg);
-          }
+            if(res.error_no=='00000'){
+                alert(res.error_msg);
+            }
         },'json')
     })
 </script>

@@ -46,6 +46,7 @@ class IndexController extends Controller
 
         $userInfo = [
             "admin_name" => $admin_name,
+            "pwd" => $pass,
         ];
         $id = LoginModel::insertGetId($userInfo);
         if ($id) {
