@@ -4,6 +4,8 @@ namespace App\Http\Response;
 
 trait JsonRequest{
     public function N($error_no,$error_msg){
+//        return $this->JsonResponse('000000','success',$data);
+
         $content = [
             'error_no'=>$error_no,
             'error_msg'=>$error_msg,
@@ -11,6 +13,8 @@ trait JsonRequest{
         return json_encode($content);
     }
     public function Y($data){
+//        return $this->JsonResponse('000000','success',$data);
+
         $content = [
             'error_no'=>0,
             'error_msg'=>'ok',
