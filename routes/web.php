@@ -17,10 +17,14 @@ Route::get('/', function () {
 //
 Route::view("/getdata","getdata");
 
-Route::view("/login","login");
-
 Route::any('/admin/reg','Index\IndexController@reg'); //注册
 Route::any('/admin/regs','Index\IndexController@regs');
 
 Route::view("/login","login");
 route::view('/register','register');
+
+Route::any('/test','Test\TestController@test');
+Route::any('/tets','Test\TestController@tets');
+Route::any('/md5','Test\TestController@md5');
+Route::any('/client','Test\TestController@client');
+Route::any('/server','Test\TestController@server');

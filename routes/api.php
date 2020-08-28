@@ -17,6 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
 //Route::get('geturlparam',function (){
 //    dump($_GET);
 //    dd(\request()->input());
@@ -56,8 +57,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/goods',"Api\TestController@goods");
 Route::post('/login',"Api\TestController@login");
+Route::post('/reg',"Api\TestController@reg");
 Route::middleware('jwt')->group(function(){
     Route::get('/usr',"Api\TestController@usr");
     Route::get('/shop',"Api\TestController@shop");
+    Route::get('/v1/mycart',"Api\TestController@getMyCart");
 });
 Route::post('/register','Api\TestController@register');
+
+Route::get('/v1/goods',"Api\TestController@getNewGoods");
+

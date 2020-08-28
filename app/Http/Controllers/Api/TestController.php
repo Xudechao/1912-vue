@@ -4,19 +4,27 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\GoodsModel;
 use App\Model\LoginModel;
+use App\Model\CartModel;
 use App\Common\Auth\Jwt;
 use App\Http\Response\JsonRequest;
 use Illuminate\Support\Facades\Redis;
 use App\Common\Error\ErrorInfo;
 use  App\Exceptions\ApiException;
-use  App\Exceptions\UidException;
+use  App\Exceptions\UidException;]
+
 class TestController extends UidException
 {
     use JsonRequest;
-    public function goods(){
-        $goods = GoodsModel::select(['goods_id','goods_name','shop_price','goods_img','goods_desc'])->get()->toArray();
-        return $this->Y($goods);
+//    public function goods(){
+//        $goods = GoodsModel::select(['goods_id','goods_name','shop_price','goods_img','goods_desc'])->get()->toArray();
+//        return $this->Y($goods);
+//    }
+
+    public function reg(){
+
+        return view('reg');
     }
+
     public function login(Request $request){
 
         $admin_name = $request->admin_name;
@@ -92,5 +100,17 @@ class TestController extends UidException
         }
 
         return $this->T($goodsdesc);
+    }
+
+    public function getNewGoods()
+    {
+        $goods = GoodsModel::orderBy('goods_id','desc')->limit(5)->get();
+
+        return $this->T($goods);
+    }
+    public function getMyCart()
+    {
+        $cart = CartModel::where('admin_id',request()->admin_id)->get();
+        return $this->T($cart);
     }
 }

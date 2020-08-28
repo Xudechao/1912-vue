@@ -18,6 +18,8 @@ trait JsonRequest{
             'error_msg'=>$error_msg,
             'data'=>$data
         ];
-        echo json_encode($content);die;
+        return  json_encode($content);die;
+
+//        echo json_encode($content);die;
     }
 }

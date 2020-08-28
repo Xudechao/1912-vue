@@ -227,5 +227,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
-
+    'api_domain' => env('API_DOMAIN', 'api.1912.com'),
+    'admin_domain' => env('ADMIN_DOMAIN', 'admin.1912.com'),
 ];
