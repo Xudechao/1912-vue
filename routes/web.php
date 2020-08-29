@@ -28,3 +28,9 @@ Route::any('/tets','Test\TestController@tets');
 Route::any('/md5','Test\TestController@md5');
 Route::any('/client','Test\TestController@client');
 Route::any('/server','Test\TestController@server');
+
+Route::any('/api/api','Test\ApiController@api');
+Route::any('/api/api2','Test\ApiController@api2');
+Route::any('/api/reg','Test\ApiController@reg');
+Route::any('/api/login','Test\ApiController@login');
+Route::any('/api/goods','Test\ApiController@goods');
