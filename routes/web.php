@@ -32,5 +32,10 @@ Route::any('/server','Test\TestController@server');
 Route::any('/api/api','Test\ApiController@api');
 Route::any('/api/api2','Test\ApiController@api2');
 Route::any('/api/reg','Test\ApiController@reg');
-Route::any('/api/login','Test\ApiController@login');
-Route::any('/api/goods','Test\ApiController@goods');
+//Route::any('/api/login','Test\ApiController@login');
+//Route::any('/api/goods','Test\ApiController@goods');
+
+Route::any('/api','Api\ApiController@api');
+Route::any('/api/reg','Api\ApiController@reg');
+Route::any('/api/login','Api\ApiController@login');
+Route::any('/api/goods','Api\ApiController@goods');

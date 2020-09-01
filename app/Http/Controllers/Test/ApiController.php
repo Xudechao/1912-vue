@@ -88,15 +88,23 @@ class ApiController extends Controller
             return $response;
         }
         $pass = password_verify($user_pwd, PASSWORD_BCRYPT);;
-
+        $token = Str::random(32);
         $login = AdminModel::where(['user_name'=>$user_name,"user_pwd"=>$pass])->first();
         if ($login){
             $response = [
                 "error" => "1231",
-                "msg" => "登录成功"
+                "msg" => "登录成功",
+                'data' => [
+                    'token' => $token
+                ]
             ];
-            return $response;
+        }else{
+            $response = [
+                "error" => "1236",
+                "msg" => "用户不存在",
+            ];
         }
+        return $response;
     }
 
     //列表
@@ -130,8 +138,8 @@ class ApiController extends Controller
             $data = json_decode($data,true);
 
         }
-
-
+//
+//
 //        //创建一个新的curl资源
 //        $ch = curl_init();
 //

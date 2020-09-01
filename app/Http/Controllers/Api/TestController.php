@@ -10,7 +10,7 @@ use App\Http\Response\JsonRequest;
 use Illuminate\Support\Facades\Redis;
 use App\Common\Error\ErrorInfo;
 use  App\Exceptions\ApiException;
-use  App\Exceptions\UidException;]
+use  App\Exceptions\UidException;
 
 class TestController extends UidException
 {
